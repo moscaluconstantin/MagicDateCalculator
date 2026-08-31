@@ -4,11 +4,15 @@ A simple HTML, CSS, and JavaScript page that calculates a "magic number" for a d
 
 ## How it works
 
-1. Enter your date of birth, a "from" date, and a "to" date.
+1. Enter your date of birth (required). The "from" and "to" dates are optional.
 2. The app calculates your magic number:
    - Sum all the digits of your date of birth (year + month + day).
    - Keep summing the digits of the result until a single digit remains. That final value is your magic number.
-3. The app scans every day between the "from" and "to" dates (inclusive) and lists the ones whose magic number matches yours.
+3. Depending on which range fields are filled in:
+   - Only date of birth: just your magic number is shown.
+   - Date of birth + "from" date only: the "to" date defaults to today.
+   - Date of birth + "to" date only: the "from" date defaults to today.
+   - All three provided: the app scans every day between "from" and "to" (inclusive) and lists the ones whose magic number matches yours.
 
 ## Files
 

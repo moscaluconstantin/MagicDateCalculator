@@ -5,6 +5,7 @@ const toInput = document.getElementById('to-date');
 const errorMessage = document.getElementById('error-message');
 const resultSection = document.getElementById('result');
 const magicNumberValue = document.getElementById('magic-number-value');
+const matchingDatesSection = document.getElementById('matching-dates-section');
 const matchingDatesList = document.getElementById('matching-dates');
 
 function sumDigits(number) {
@@ -52,22 +53,31 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   clearError();
 
-  if (!dobInput.value || !fromInput.value || !toInput.value) {
-    showError('Please fill in all three dates.');
+  if (!dobInput.value) {
+    showError('Please provide your date of birth.');
     return;
   }
 
   const dob = parseDateInput(dobInput.value);
-  const fromDate = parseDateInput(fromInput.value);
-  const toDate = parseDateInput(toInput.value);
+  const magicNumber = magicNumberForDate(dob);
+  magicNumberValue.textContent = magicNumber;
+
+  // No range given at all: just show the magic number.
+  if (!fromInput.value && !toInput.value) {
+    matchingDatesSection.hidden = true;
+    resultSection.hidden = false;
+    return;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const fromDate = fromInput.value ? parseDateInput(fromInput.value) : today;
+  const toDate = toInput.value ? parseDateInput(toInput.value) : today;
 
   if (fromDate > toDate) {
     showError('The "from date" must be before or equal to the "to date".');
     return;
   }
-
-  const magicNumber = magicNumberForDate(dob);
-  magicNumberValue.textContent = magicNumber;
 
   matchingDatesList.innerHTML = '';
   const matches = [];
@@ -93,5 +103,6 @@ form.addEventListener('submit', (event) => {
     });
   }
 
+  matchingDatesSection.hidden = false;
   resultSection.hidden = false;
 });

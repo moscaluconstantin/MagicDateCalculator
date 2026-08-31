@@ -19,12 +19,12 @@
 
       <div class="field-row">
         <div class="field">
-          <label for="from-date">From date</label>
-          <input type="date" id="from-date" required>
+          <label for="from-date">From date <span class="optional">(optional)</span></label>
+          <input type="date" id="from-date">
         </div>
         <div class="field">
-          <label for="to-date">To date</label>
-          <input type="date" id="to-date" required>
+          <label for="to-date">To date <span class="optional">(optional, defaults to today)</span></label>
+          <input type="date" id="to-date">
         </div>
       </div>
 
@@ -39,9 +39,11 @@
         <span class="number" id="magic-number-value">0</span>
       </div>
 
-      <h2>Matching dates in range</h2>
-      <div class="dates-wrapper">
-        <ul id="matching-dates" class="dates-list"></ul>
+      <div id="matching-dates-section">
+        <h2>Matching dates in range</h2>
+        <div class="dates-wrapper">
+          <ul id="matching-dates" class="dates-list"></ul>
+        </div>
       </div>
     </section>
   </main>

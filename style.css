@@ -72,6 +72,12 @@ label {
   color: var(--muted-color);
 }
 
+.optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 input[type="date"] {
   padding: 10px 12px;
   border-radius: 10px;
