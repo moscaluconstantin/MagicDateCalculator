@@ -13,11 +13,14 @@ function sumDigits(number) {
     .reduce((sum, digit) => sum + Number(digit), 0);
 }
 
-// Magic number = sum of the date's digits, then the sum of that result's digits.
+// Recursively sums digits until a single digit remains.
+function reduceToSingleDigit(number) {
+  return number < 10 ? number : reduceToSingleDigit(sumDigits(number));
+}
+
 function magicNumberForDate(date) {
   const digits = `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
-  const firstSum = sumDigits(digits);
-  return sumDigits(firstSum);
+  return reduceToSingleDigit(sumDigits(digits));
 }
 
 function parseDateInput(value) {
