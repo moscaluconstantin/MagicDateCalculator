@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magic Date Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Magic Date Calculator</h1>
+    <p class="subtitle">Find your magic number and every date in a range that shares it.</p>
+
+    <form id="magic-form">
+      <div class="field">
+        <label for="dob">Date of birth</label>
+        <input type="date" id="dob" required>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="from-date">From date</label>
+          <input type="date" id="from-date" required>
+        </div>
+        <div class="field">
+          <label for="to-date">To date</label>
+          <input type="date" id="to-date" required>
+        </div>
+      </div>
+
+      <button type="submit">Calculate</button>
+    </form>
+
+    <p class="error" id="error-message" hidden></p>
+
+    <section id="result" class="result" hidden>
+      <div class="magic-number">
+        <span class="label">Your magic number</span>
+        <span class="number" id="magic-number-value">0</span>
+      </div>
+
+      <h2>Matching dates in range</h2>
+      <div class="dates-wrapper">
+        <ul id="matching-dates" class="dates-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
